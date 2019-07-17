@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baldwin.mapper.BeanTest1Mapper">
+
+    <sql id="getListSQL">
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="condition.packetNo != null">
+                and packetNo = #{condition.packetNo}
+            </if>
+            <if test="condition.bDate != null">
+                and date &gt;= #{condition.bDate}
+            </if>
+            <if test="condition.eDate != null">
+                and date &lt;= #{condition.eDate}
+            </if>
+            <if test="condition.date != null">
+                and date = #{condition.date}
+            </if>
+                and statue = 1
+
+        </trim>
+    </sql>
+
+    <resultMap id="rstMap" type="com.baldwin.bean.RstBeanTest">
+        <result column="packetNo" property="packetNo" jdbcType="VARCHAR"/>
+        <result column="orderNo" property="orderNo" jdbcType="VARCHAR"/>
+        <result column="token" property="token" jdbcType="VARCHAR"/>
+        <result column="date" property="date" jdbcType="VARCHAR"/>
+        <result column="time" property="time" jdbcType="VARCHAR"/>
+        <result column="state" property="state" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getInfoList" parameterType="com.common.bean.Criteria"  resultMap="rstMap">
+        SELECT
+        packetNo, orderNo, token, date, time, state
+        FROM
+       pay p
+        <if test="_parameter != null">
+            <include refid="getListSQL" />
+        </if>
+    </select>
+
+<!--    <update id="updateOneById" parameterType="com.hrms.bean.Employee">
+        UPDATE
+        <include refid="table_name"/>
+        SET
+        emp_email = #{employee.empEmail, jdbcType = VARCHAR},
+        gender = #{employee.gender, jdbcType = VARCHAR},
+        department_id = #{employee.departmentId, jdbcType = INTEGER}
+        WHERE
+        emp_id = #{empId, jdbcType = INTEGER}
+    </update>-->
+</mapper>
