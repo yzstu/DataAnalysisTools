@@ -15,17 +15,15 @@ import java.util.ArrayList;
 public class test {
     @Autowired
     BeanTest1Mapper beanTest1Mapper;
-    private void test(){
+    @Test
+    public void test(){
         Criteria criteria = new Criteria();
         criteria.put("bDate" , "2019-06-01");
         criteria.put("eDate" , "2019-06-31");
         ArrayList<RstBeanTest> rstList = beanTest1Mapper.getInfoList(criteria);
         int i = 0;
         for (RstBeanTest rstBeanTest : rstList){
-            if (i==10){
-                break;
-            }
-            System.out.println(rstBeanTest.getToken());
+//            String path = "E:\\test"
         }
     }
 }

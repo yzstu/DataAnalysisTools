@@ -17,7 +17,7 @@
             <if test="condition.date != null">
                 and date = #{condition.date}
             </if>
-                and statue = 1
+                and state = 1
 
         </trim>
     </sql>
@@ -35,7 +35,7 @@
         SELECT
         packetNo, orderNo, token, date, time, state
         FROM
-       pay p
+        pay
         <if test="_parameter != null">
             <include refid="getListSQL" />
         </if>
