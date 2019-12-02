@@ -7,9 +7,10 @@
     <!-- 1. 数据源 : DriverManagerDataSource -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/payment_2?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
+        <property name="url"
+                  value="jdbc:mysql://localhost:3306/payment_b?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
         <property name="username" value="root"/>
-        <property name="password" value="wy1240594179"/>
+        <property name="password" value="root"/>
     </bean>
 
     <!--
